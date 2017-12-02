@@ -1,6 +1,6 @@
 
 body {
-  background: #F8A434;
+    background-image: url("background.png");
   font-family: 'Lato', sans-serif;
   color: #FDFCFB;
   text-align: center;
@@ -15,8 +15,15 @@ form {
 
 .header {
   font-size: 35px;
+    font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 5px;
+}
+.h1 {
+    font-size: 35px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 5px;
 }
 
 
@@ -30,16 +37,23 @@ form {
 
 .input {
   display: flex;
-  align-items: center;
+    align-items: center;
 }
 
 
 .button {
   height: 44px;
+  width: 150px;
   border: none;
 }
 
-  
+ul, ul li {
+    display: inline;
+    list-style: none;
+    margin: 20px;
+    padding-left: 10px;
+}
+
 #email {
   width: 75%;
   background: #FDFCFB;
@@ -52,26 +66,25 @@ form {
 
 
 #submit {
-  width: 25%;
+  width: 150px;
   height: 46px;
-  background: #E86C8D;
+  background: #FFD23F;
   font-family: inherit;
   font-weight: bold;
-  color: inherit;
+  color: #58641D;
   letter-spacing: 1px;
   border-radius: 0 5px 5px 0;
   cursor: pointer;
   transition: background .3s ease-in-out;
 }
-  
 
-#submit:hover {
-  background: #d45d7d;
-}
-  
+
+
+
 
 input:focus {
   outline: none;
-  outline: 2px solid #E86C8D;
-  box-shadow: 0 0 2px #E86C8D;
+  outline: 2px solid #58641D;
+  box-shadow: 0 0 2px #58641D;
+  color: whitesmoke;
 }
