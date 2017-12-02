@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome to DriveOn</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <form action="#" method="post" name="sign up for beta form">
+      <div class="header">
+         <p>Here are your rides!</p>
+         <div id=drivers class="description">
+         </div>
+         
+         <script>
+           function process() {
+           getJSON('http://localhost:5340/api/values/journey/all',
+              function(err, data) 
+              {
+                  if (err !== null) 
+                  {
+                      console.log('Something went wrong: ' + err);
+                  }
+                  else
+                  {  
+                    for (var i = data.length - 1; i >= 0; i--) 
+                    {
+                      document.getElementById("drivers").innerHTML += `<p id="driver1">Driver:` + data[i].Name + `</p>`;
+                    }                   
+                  }
+                 
+              });
+    }
+
+    var getJSON = function(url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.responseType = 'json';
+        xhr.onload = function() {
+            var status = xhr.status;
+            if (status === 200) {
+                callback(null, xhr.response);
+            } else {
+                callback(status, xhr.response);
+            }
+        };
+        xhr.send();
+
+    };
+    process();
+         </script>
+    </form>
+  </body>
+</html>
