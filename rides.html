@@ -9,28 +9,27 @@
     <form action="#" method="post" name="sign up for beta form">
       <div class="header">
          <p>Here are your rides!</p>
-         <div id=drivers class="description">
-         </div>
-         
-         <script>
+
+          <script>
            function process() {
            getJSON('http://localhost:5340/api/values/journey/1',
-              function(err, data) 
+              function(err, data)
               {
-                  if (err !== null) 
+                  if (err !== null)
                   {
                       console.log('Something went wrong: ' + err);
                   }
                   else
-                  {  
-                    for (var i = data[0].Users.length - 1; i >= 0; i--) 
+                  {
+                    for (var i = data.Users.length - 1; i >= 0; i--)
                     {
-                      document.getElementById("drivers").innerHTML += `<p id="driver${i}">Ridemate: ` + data[0].Users[i].Name + `</p>`;
-                    }           
+                      document.getElementById("drivers").innerHTML += `<p id="driver${i}">Ridemate: ` + data.Users[i].Name + `</p>`;
+                    }
                   }
-                 
+
               });
     }
+
 
     var getJSON = function(url, callback) {
         var xhr = new XMLHttpRequest();
@@ -49,11 +48,10 @@
     };
     process();
          </script>
+
     </form>
 
-
-    <div id="googleMap" style="width:100%;height:400px;"></div>
-
+    <div id="googleMap" style="width:700px;height:700px; align-items: center">
     <script>
     function myMap() {
 
@@ -264,18 +262,30 @@
     };
 
     var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+        var myLatLng = {lat: 50.0759008, lng: 19.9315232};
+
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            title: 'Start'
+        });
+        marker.setMap(map);
+
+        var myLatLng2 = {lat: 50.0457008, lng: 20.0335232};
+
+        var marker2 = new google.maps.Marker({
+            position: myLatLng2,
+            title: 'End'
+        });
+        marker2.setMap(map);
     }
 
-    var myLatLng = {lat: 50.0759008, lng: 19.9315232};
 
-    var marker = new google.maps.Marker({
-      position: myLatLng,
-      title: 'Hello World!'
-    });
 
-    marker.setMap(map);
     </script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDltFzN6Dw8tEPfIvNXue5tXcxNN34isak&callback=myMap"></script>
+    </div>
+
   </body>
 </html>
